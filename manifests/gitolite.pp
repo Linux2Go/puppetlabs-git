@@ -20,6 +20,7 @@ class git::gitolite($pubkey) {
   exec { "/usr/bin/gl-setup -q $pubkey":
     user => "git",
     environment => "HOME=/home/git",
+    creates => "/home/git/.gitolite.rc",
     require => [User[git], Package[gitolite]],
   }
 }
